@@ -8,4 +8,5 @@ build:
 
 .PHONY: install_dependencies
 install_dependencies:
-	@apt update -y && apt install -y texlive-full texlive-latex-recommended latexmk make
+	@sudo apt update -y
+	@sudo DEBIAN_FRONTEND=noninteractive apt install -y texlive-full texlive-latex-recommended latexmk make
