@@ -1,7 +1,8 @@
 \documentclass{beamer}
+\usepackage{mathtools}
 \usepackage{amsmath}
 
-\title{Study Notes: Linear Algebra and its Applications}
+\title{Math Notes: Linear Algebra and its Applications}
 \subtitle[short subtitle]{Systems of Linear Equations}
 \author{Demitri Swan}
 \beamertemplatenavigationsymbolsempty
@@ -18,17 +19,17 @@
 Given variables $\left(x_{1}, ... , x_{n}\right)$\\
 Given b and coefficients $\left(a_{1}, ... ,a_{n}\right)$ which are real or complex numbers\\
 A \textbf{linear equation} can be written as:\\
-\[ \left[ \sum_{i=1}^{n} a_{i}x_{i} \right] = b \]
+\[ \sum_{i=1}^{n} a_{i}x_{i} = b \]
 \end{definition}
 \end{frame}
 
 \begin{frame}{System Of Linear Equations}
 \begin{definition}
 A \textbf{linear system} is a collection of linear equations in the same variables $\left(x_{1}, ... ,x_{n}\right)$ 
-but including perhaps different cofficients. A linear equation can be written as:\\
+but perhaps including different coefficients. A linear equation can be written as:\\
 \begin{align*}
-\left[ \sum_{i=1}^{n} a_{i}x_{i} \right] &= b \\
-\left[ \sum_{i=1}^{n} a^{\prime}_{i}x_{i} \right] &= b^{\prime}
+\sum_{i=1}^{n} a_{i}x_{i} &= b \\
+\sum_{i=1}^{n} a^{\prime}_{i}x_{i} &= b^{\prime}
 \end{align*}
 \end{definition}
 \end{frame}
@@ -50,7 +51,56 @@ Linear systems are \textbf{equivalent} if they share the same solution set.
 \end{definition}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{Three Scenarios Regarding Solutions}
+A solution to a linear system has:
+\begin{itemize}
+\item No solution (lines do not intersect)
+\item One solution (lines intersect)
+\item Infinite solutions (lines are coincident)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Coefficient And Augmented Matrices}
+\begin{definition}
+  A \textbf{coefficient matrix} as a matrix containing only the coefficients of each equation in a linear system
+  in the same order and position as the system itself. An \textbf{augmented matrix} has an additional column to 
+  accommodate the numeric values on the right hand side of each equation in the system.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Coefficient And Augmented Matrices}
+\begin{example}
+\begin{equation}
+\begin{split}
+x_{1} - 2x_{2} &= 1 \\
+-x_{1} + 3x_{2} &= 3
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{bmatrix*}[r]
+1 & -2 & 1 \\
+-1 & 3 & 3 
+\end{bmatrix*}
+\end{equation}
+\end{example}
+\end{frame}
+
+\begin{frame}{Elementary Row Operations}
+The elementary row operations for solving a linear system:
+\begin{itemize}
+\item Replacement: Replace one row by the sum of itself and another row
+\item Interchange: Exchange two rows
+\item Scaling: Multiply each element in a row by a non-zero constant
+\end{itemize}
+\textit{The goal is to get the matrix into reduced echelon form which is discussed in the next chapter}
+\end{frame}
+
+
+\begin{frame}{Row Equivalence}
+\begin{definition}
+Two matrices are row equivalent if there exists a sequence of elementary row
+operations that transforms one matrix into the other.
+\end{definition}
 \end{frame}
 
 \end{document}
