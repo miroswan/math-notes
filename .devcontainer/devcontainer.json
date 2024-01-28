@@ -1,6 +1,6 @@
 {
   "image": "ubuntu:latest",
-  "postCreateCommand": "apt update -y && apt install -y texlive-full texlive-latex-recommended latexmk make",
+  "postCreateCommand": "apt update -y && DEBIAN_FRONTEND=noninteractive apt install -y texlive-full texlive-latex-recommended latexmk make",
   "customizations": {
     "vscode": {
       "extensions": [
