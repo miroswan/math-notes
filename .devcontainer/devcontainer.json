@@ -1,0 +1,11 @@
+{
+  "image": "ubuntu:latest",
+  "postCreateCommand": "apt update -y && apt install -y texlive texlive-latex-recommended latexmk",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop"
+      ]
+    }
+  }
+}
