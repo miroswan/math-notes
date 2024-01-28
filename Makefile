@@ -5,3 +5,7 @@ MAKEFILES := $(shell find . -mindepth 2 -name Makefile)
 .PHONY: build 
 build: 
 	@$(foreach file,$(MAKEFILES),make -C $(dir $(file));)
+
+.PHONY: install_dependencies
+install_dependencies:
+	@apt update -y && apt install -y texlive-full texlive-latex-recommended latexmk make
