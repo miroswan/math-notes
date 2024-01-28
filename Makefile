@@ -1,11 +1,7 @@
 # Find all Makefiles in the current directory and subdirectories
-MAKEFILES := $(wildcard **/Makefile)
+MAKEFILES := $(shell find . -mindepth 2 -name Makefile)
 
 # Define a rule to execute each Makefile
-.PHONY: $(MAKEFILES)
-all: $(MAKEFILES)
-
-$(MAKEFILES):
-	# Call Make in the directory containing the current Makefile
-	echo $@
-	$(MAKE) -C $(dir $@)
+.PHONY: build 
+build: 
+	@$(foreach file,$(MAKEFILES),make -C $(dir $(file));)
