@@ -104,11 +104,15 @@
 
 \begin{frame}{Row Echelon Form: The first property}
   \begin{example}
+    \begin{itemize}
+      \item Given $\Box$, which represents LRE(i, j)
+      \item Given $\star$, which represents any non-zero value at $A[i, j]$
+    \end{itemize}
     \begin{equation}
       \begin{bmatrix*}[r]
-        1 & 2 & 3 & 4 \\
-        0 & 6 & 7 & 8 \\
-        0 & 0 & 0 & 0
+        \Box & \star & \star & \star \\
+        0 & \Box & \star & \star \\
+        0 & 0 & 0 & 0 
       \end{bmatrix*}
     \end{equation}
 
@@ -123,7 +127,7 @@
     \end{itemize}
     \begin{equation}
       \begin{split}
-        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{j | 0 <= j < n \} \left( LRE(i, j) \right) \Bigr) \implies \Bigr. \\
+        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{j | 0 <= j < n \} \left( LRE(i, j) \right) \land j > 0 \Bigr)  \implies \Bigr. \\
         &\Bigl. \Bigl(\exists j^{\prime} \in \{ j^{\prime} | 0 <= j^{\prime} < j \} \left( LRE(i - 1, j^{\prime}) \right) \Bigr) \Bigr]
       \end{split}
     \end{equation}
@@ -132,11 +136,15 @@
 
 \begin{frame}{Row Echelon Form: The second property}
   \begin{example}
+    \begin{itemize}
+      \item Given $\Box$, which represents LRE(i, j)
+      \item Given $\star$, which represents any non-zero value at $A[i, j]$
+    \end{itemize}
     \begin{equation}
       \begin{bmatrix*}[r]
-        1 & 2 & 3 & 4 \\
-        0 & 6 & 7 & 8 \\
-        0 & 0 & 8 & 11
+        \Box & \star & \star & \star \\
+        0 & \Box & \star & \star \\
+        0 & 0 & \star & \star 
       \end{bmatrix*}
     \end{equation}
 
@@ -151,7 +159,7 @@
     \end{itemize}
     \begin{equation}
       \begin{split}
-        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{ j | 0 <= j < n \} \left(LRE(i, j)\right)\Bigr) \implies \Bigr. \\
+        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{ j | 0 <= j < n \} \left(LRE(i, j)\right) \Bigr) \implies \Bigr. \\
         &\Bigl. \Bigl( \forall i^{\prime} \in \{ i^{\prime} | i < i^{\prime} < m \} \left( A[i^{\prime}, j] = 0 \right) \Bigr) \Bigr]
       \end{split}
     \end{equation}
@@ -160,11 +168,15 @@
 
 \begin{frame}{Row Echelon Form: The third property}
   \begin{example}
+    \begin{itemize}
+      \item Given $\Box$, which represents LRE(i, j)
+      \item Given $\star$, which represents any non-zero value at $A[i, j]$
+    \end{itemize}
     \begin{equation}
       \begin{bmatrix*}[r]
-        2 & 1 & 5 & 7 \\
-        0 & 6 & 7 & 8 \\
-        0 & 0 & 8 & 11
+        \Box & \star & \star & \star \\
+        0 & \Box & \star & \star \\
+        0 & 0 & \Box & \star 
       \end{bmatrix*}
     \end{equation}
 
@@ -181,6 +193,142 @@
       \item Each leading row entry is the only non-zero entry in its column 
     \end{enumerate}
   \end{definition}
+\end{frame}
+
+\begin{frame}{Reduced Row Echelon Form: The fourth property}
+  \begin{block}{Fourth Property of Row Echelon Form}
+    \begin{itemize}
+    \item Given an m x n matrix A where m is the row size and n is the column size
+    \end{itemize}
+    \begin{equation}
+      \begin{split}
+        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{j | 0 <= j < n \} \left( LRE(i, j) \right)  \Bigr) \implies A[i, j] = 1 \Bigr] \\
+      \end{split}
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Row Echelon Form: The fourth property}
+  \begin{example}
+    \begin{itemize}
+      \item Given $\star$, which represents any non-zero value at $A[i, j]$
+    \end{itemize}
+    \begin{equation}
+      \begin{bmatrix*}[r]
+        1 & \star & \star & \star \\
+        0 & 1 & \star & \star \\
+        0 & 0 & 1 & \star 
+      \end{bmatrix*}
+    \end{equation}
+
+    \textit{Notice how all the leading row entries have a value of 1}
+  \end{example}
+\end{frame}
+
+\begin{frame}{Reduced Row Echelon Form: The fifth property}
+  \begin{block}{Fifth Property of Row Echelon Form}
+    \begin{itemize}
+    \item Given an m x n matrix A where m is the row size and n is the column size
+    \end{itemize}
+    \begin{equation}
+      \begin{split}
+        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{j | 0 <= j < n \} \left( LRE(i, j) \right) \Bigr)  \implies \Bigr. \\
+        &\Bigl. \Bigl(\forall i^{\prime} \in \{ i^{\prime} | 0 <= i^{\prime} < i \} \left( A[i, j] = 0 \right) \Bigr) \Bigr]
+      \end{split}
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Row Echelon Form: The fifth property}
+  \begin{example}
+    \begin{equation}
+      \begin{bmatrix*}[r]
+        1 & 0 & 0 & \star \\
+        0 & 1 & 0 & \star \\
+        0 & 0 & 1 & \star 
+      \end{bmatrix*}
+    \end{equation}
+
+    \textit{Notice how all the leading row entries have only zeros above it}
+  \end{example}
+\end{frame}
+
+\begin{frame}{Uniqueness of Reduced Echelon Form}
+  \begin{definition}
+    Each matrix is row equivalent to one and only one reduced echelon matrix. 
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Pivot Position}
+  \begin{definition}
+    A row containing a leading row entry can be transformed such that the
+    leading row entry has a value of 1 in efforts to produce reduced row
+    echelon form. This leading row entry is called the \textbf{pivot position}
+    and its corresponding column is called the \textbf{pivot column}.
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Row Reduction Algorithm}
+  \begin{definition}
+    \begin{enumerate}
+      \item Begin with the leftmost nonzero column. This is a pivot column. The pivot position is at the top.
+      \item Select a nonzero entry in the pivot column as a pivot. If necessary, interchange rows to move this entry into the pivot position.
+      \item Use row replacement operations to create zeros in all positions below the pivot. 
+      \item Cover (or ignore) the row containing the pivot position and cover all rows, if any, above it. Apply steps 1–3 to the submatrix that remains. Repeat the process until there are no more nonzero rows to modify.
+      \item Beginning with the rightmost pivot and working upward and to the left, create zeros above each pivot. If a pivot is not 1, make it 1 by a scaling operation.
+    \end{enumerate}
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Row Reduction Algorithm}
+  \begin{definition}
+    The \textbf{forward phase} of the row reduction algorithm is comprised of steps 1 through 4.
+    The \textbf{backward phase} of the row reduction algorithm is comprised of step 5.
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Row Reduction Algorithm}
+  \begin{definition}
+    \textbf{partial pivoting} is the process by which matrix processing software selects as
+    a pivot the entry in the column having the largest value. This reduces rounding errors
+    due to floating point arithmetic.
+  \end{definition}
+\end{frame}
+
+\begin{frame}{Reduced Row Echelon Form and Linear Systems}
+  The reduced row echelon form of an augmented matrix clearly indicates the values in
+  the system.
+  \begin{example}
+    \[
+    \begin{bmatrix*}[r]
+      1 & 0 & -5 & 1 \\
+      0 & 1 & 1  & 4 \\
+      0 & 0 & 0  & 0
+    \end{bmatrix*}
+    \]
+    \begin{equation}
+      \begin{split}
+        x_{1}  + 0x_{2} - x_{5} &= 1 \\
+        0x_{1} + x_{2}  + x_{3} &= 4 \\
+        0x_{1} + 0x_{2} + 0x{3} &= 0 
+      \end{split}
+    \end{equation}
+  \end{example}
+\end{frame}
+
+\begin{frame}{Reduced Row Echelon Form and Linear Systems}
+  In the previous example, $x_{1}$ and $x_{2}$ are \textbf{basic variables} because specific
+  values can easily be assigned. $x_{3}$ is a \textbf{free value} because any value can be assigned.
+\end{frame}
+
+\begin{frame}{Using Row Reduction to Solve a Linear System}
+  \begin{enumerate}
+    \item Write the augmented matrix of the system
+    \item Use the row reduction algorithm to obtain an equivalent augmented matrix in row echelon form.
+    \item Continue row reduction to obtain row echelon form
+    \item Write the system of equations corresponding to the matrix in row echelon form 
+    \item Write non-zero equation so that its one basic variable is expressed in terms of any free variables appearing in the equation
+  \end{enumerate}
 \end{frame}
 
 \end{document}
