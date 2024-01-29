@@ -29,8 +29,10 @@ that can be easily analyzed. This may include:
 \begin{definition}
 A \textbf{non-zero row} is a row that has at least one element whose value is not zero. \\
 \begin{block}{Propositional Function}
-Given a m x n matrix A where m is the row size and n is the column size \\
-Given some identifying row index i \\ 
+\begin{itemize}
+\item Given a m x n matrix A where m is the row size and n is the column size
+\item Given some identifying row index i
+\end{itemize}
 \begin{equation}
 NZR(i, j) = \exists j \in \{ j | 0 <= j < n \} \left( A\left[i, j\right] \neq 0 \right)
 \end{equation}
@@ -42,8 +44,10 @@ NZR(i, j) = \exists j \in \{ j | 0 <= j < n \} \left( A\left[i, j\right] \neq 0 
 \begin{definition}
 A \textbf{non-zero column} is a column that has at least one element whose value is not zero. \\
 \begin{block}{Propositional Function}
-Given a m x n matrix A where m is the row size and n is the column size \\
-Given some identifying column index j \\ 
+\begin{itemize}
+\item Given a m x n matrix A where m is the row size and n is the column size
+\item Given some identifying column index j
+\end{itemize}
 \begin{equation}
 NZC(i, j) = \exists i \in \{ i | 0 <= i < m \} \left( A\left[i, j\right] \neq 0 \right)
 \end{equation}
@@ -56,8 +60,10 @@ NZC(i, j) = \exists i \in \{ i | 0 <= i < m \} \left( A\left[i, j\right] \neq 0 
 A \textbf{leading row entry} is the first left-most entry in a non-zero row that is non-zero.
 \end{definition}
 \begin{block}{Propositional Function}
-Given a m x n matrix A where m is the row size and n is the column size \\
-Given some identifying row index i \\ 
+\begin{itemize}
+\item Given a m x n matrix A where m is the row size and n is the column size
+\item Given some identifying row index i
+\end{itemize}
 \begin{equation}
 \begin{split}
 LRE(i, j) = \ &\left[\forall k \in \{ k | 0 <= k < j \}\left(A\left[i, k\right] = 0\right)\right] \\
@@ -80,12 +86,17 @@ LRE(i, j) = \ &\left[\forall k \in \{ k | 0 <= k < j \}\left(A\left[i, k\right] 
 
 
 \begin{frame}{Row Echelon Form: The first property}
+\begin{block}{First Property of Row Echelon Form}
+\begin{itemize}
+\item Given a m x n matrix A where m is the row size and n is the column size
+\end{itemize}
 \begin{equation}
 \begin{split}
-&\forall i \in \{i | 0 <= i < m\}\left[\forall j \in \{j | 0 <= j < n \}\left( A[i, j] = 0\right)\right] \implies \\ 
-&\forall \left[{i^{\prime} | i < i^{\prime} < m} \forall j^{\prime} \in \{ j^{\prime} | 0 < j^{\prime} < n \}\left(A[i^{\prime}, j^{\prime}] = 0\right)\right]
+&\forall i \in \{i | 0 <= i < m\}\Bigl[\Bigl(\forall j \in \{j | 0 <= j < n \}\left( A[i, j] = 0\right)\Bigr) \implies \Bigr. \\ 
+&\left(\forall \Bigl. \in \{i^{\prime} | i < i^{\prime} < m\} \forall j^{\prime} \in \{ j^{\prime} | 0 < j^{\prime} < n \} \left(A[i^{\prime}, j^{\prime}] = 0\right) \right) \Bigr]
 \end{split}
 \end{equation}
+\end{block}
 \end{frame}
 
 \end{document}
