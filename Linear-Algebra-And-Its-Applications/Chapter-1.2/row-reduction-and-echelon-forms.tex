@@ -11,7 +11,7 @@
 \begin{document}
 
 \begin{frame}
-  \titlepage % Generate the title slide
+  \titlepage
 \end{frame}
 
 \begin{frame}{Row Reduction Algorithm: Introduction}
@@ -36,7 +36,7 @@
         \item Given some identifying row index i
       \end{itemize}
       \begin{equation}
-        NZR(i, j) = \exists j \in \{ j | 0 <= j < n \} \left( A\left[i, j\right] \neq 0 \right)
+        NZR(i, j) = \exists j \in \{ j | 0 <= j < n \} \left( A[i, j] \neq 0 \right)
       \end{equation}
     \end{block}
   \end{definition}
@@ -52,7 +52,7 @@
         \item Given some identifying column index j
       \end{itemize}
       \begin{equation}
-        NZC(i, j) = \exists i \in \{ i | 0 <= i < m \} \left( A\left[i, j\right] \neq 0 \right)
+        NZC(i, j) = \exists i \in \{ i | 0 <= i < m \} \left( A[i, j] \neq 0 \right)
       \end{equation}
     \end{block}
   \end{definition}
@@ -69,8 +69,8 @@
     \end{itemize}
     \begin{equation}
       \begin{split}
-        LRE(i, j) = \ &\left[\forall k \in \{ k | 0 <= k < j \}\left(A\left[i, k\right] = 0\right)\right] \\
-                    \ &\land A\left[i, j\right] \neq 0
+        LRE(i, j) = \ &\left[\forall k \in \{ k | 0 <= k < j \} \left( A[i, k] = 0 \right) \right] \\
+                    \ &\land A[i, j] \neq 0
       \end{split}
     \end{equation}
   \end{block}
@@ -91,12 +91,12 @@
 \begin{frame}{Row Echelon Form: The first property}
   \begin{block}{First Property of Row Echelon Form}
     \begin{itemize}
-    \item Given a m x n matrix A where m is the row size and n is the column size
+    \item Given an m x n matrix A where m is the row size and n is the column size
     \end{itemize}
     \begin{equation}
       \begin{split}
-        &\forall i \in \{i | 0 <= i < m\}\Bigl[\Bigl(\forall j \in \{j | 0 <= j < n \}\left( A[i, j] = 0\right)\Bigr) \implies \Bigr. \\ 
-        &\left(\forall \Bigl. \in \{i^{\prime} | i < i^{\prime} < m\} \forall j^{\prime} \in \{ j^{\prime} | 0 < j^{\prime} < n \} \left(A[i^{\prime}, j^{\prime}] = 0\right) \right) \Bigr]
+        &\forall i \in \{i | 0 <= i < m\} \Bigl[ \Bigl(\forall j \in \{j | 0 <= j < n \}\left( A[i, j] = 0\right) \Bigr) \implies \Bigr. \\ 
+        &\Bigl .\left( \forall \in \{i^{\prime} | i < i^{\prime} < m\} \forall j^{\prime} \in \{ j^{\prime} | 0 < j^{\prime} < n \} \left( A[i^{\prime}, j^{\prime}] = 0 \right) \right) \Bigr]
       \end{split}
     \end{equation}
   \end{block}
@@ -111,23 +111,76 @@
         0 & 0 & 0 & 0
       \end{bmatrix*}
     \end{equation}
+
+    \textit{Notice how any rows only including zeros are found at the bottom}
   \end{example}
 \end{frame}
 
 \begin{frame}{Row Echelon Form: The second property}
   \begin{block}{Second Property of Row Echelon Form}
     \begin{itemize}
-    \item Given a m x n matrix A where m is the row size and n is the column size
+    \item Given an m x n matrix A where m is the row size and n is the column size
     \end{itemize}
     \begin{equation}
       \begin{split}
-        % We have to use empty delimeters to start a open parens or bracket on one line and finish it on another. An empty
-        % delimeter is the dot character '.'.
-        &\forall i \in \{i | 0 <= i < m\}\Bigl[\Bigl(\forall j \in \{j | 0 <= j < n \}\left( A[i, j] = 0\right)\Bigr) \implies \Bigr. \\ 
-        &\left(\forall \Bigl. \in \{i^{\prime} | i < i^{\prime} < m\} \forall j^{\prime} \in \{ j^{\prime} | 0 < j^{\prime} < n \} \left(A[i^{\prime}, j^{\prime}] = 0\right) \right) \Bigr]
+        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{j | 0 <= j < n \} \left( LRE(i, j) \right) \Bigr) \implies \Bigr. \\
+        &\Bigl. \Bigl(\exists j^{\prime} \in \{ j^{\prime} | 0 <= j^{\prime} < j \} \left( LRE(i - 1, j^{\prime}) \right) \Bigr) \Bigr]
       \end{split}
     \end{equation}
   \end{block}
+\end{frame}
+
+\begin{frame}{Row Echelon Form: The second property}
+  \begin{example}
+    \begin{equation}
+      \begin{bmatrix*}[r]
+        1 & 2 & 3 & 4 \\
+        0 & 6 & 7 & 8 \\
+        0 & 0 & 8 & 11
+      \end{bmatrix*}
+    \end{equation}
+
+    \textit{Notice how the leading row entries step downwards and to the right}
+  \end{example}
+\end{frame}
+
+\begin{frame}{Row Echelon Form: The third property}
+  \begin{block}{Third Property of Row Echelon Form}
+    \begin{itemize}
+    \item Given an m x n matrix A where m is the row size and n is the column size
+    \end{itemize}
+    \begin{equation}
+      \begin{split}
+        &\forall i \in \{i | 0 <= i < m \} \Bigl[ \Bigl( \exists j \in \{ j | 0 <= j < n \} \left(LRE(i, j)\right)\Bigr) \implies \Bigr. \\
+        &\Bigl. \Bigl( \forall i^{\prime} \in \{ i^{\prime} | i < i^{\prime} < m \} \left( A[i^{\prime}, j] = 0 \right) \Bigr) \Bigr]
+      \end{split}
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Row Echelon Form: The third property}
+  \begin{example}
+    \begin{equation}
+      \begin{bmatrix*}[r]
+        2 & 1 & 5 & 7 \\
+        0 & 6 & 7 & 8 \\
+        0 & 0 & 8 & 11
+      \end{bmatrix*}
+    \end{equation}
+
+    \textit{Notice how all entries under a leading row entry are zero}
+  \end{example}
+\end{frame}
+
+\begin{frame}{Reduced Row Echelon Form}
+  \begin{definition}
+    \textbf{reduced row echelon form} holds each of the properties of row echelon form and maintains
+    the following additional properties:
+    \begin{enumerate}
+      \item All leading row entries have a value of 1
+      \item Each leading row entry is the only non-zero entry in its column 
+    \end{enumerate}
+  \end{definition}
 \end{frame}
 
 \end{document}
