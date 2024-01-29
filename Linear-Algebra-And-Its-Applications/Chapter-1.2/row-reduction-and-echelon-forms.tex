@@ -1,0 +1,91 @@
+\documentclass{beamer}
+\usepackage{mathtools}
+\usepackage{amsmath}
+
+\title{Math Notes: Linear Algebra and its Applications}
+\subtitle[short subtitle]{Row Reduction and Echelon Forms}
+\author{Demitri Swan}
+\beamertemplatenavigationsymbolsempty
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage % Generate the title slide
+\end{frame}
+
+\begin{frame}{Row Reduction Algorithm: Introduction}
+\begin{definition}
+A \textbf{row reduction algorithm} is a procedure that transforms any matrix into a state
+that can be easily analyzed. This may include:
+\begin{itemize}
+\item Determining if there is a non-null solution set
+\item Determining if there are zero, one, or infinite solutions
+\end{itemize}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Non-Zero Row}
+\begin{definition}
+A \textbf{non-zero row} is a row that has at least one element whose value is not zero. \\
+\begin{block}{Propositional Function}
+Given a m x n matrix A where m is the row size and n is the column size \\
+Given some identifying row index i \\ 
+\begin{equation}
+NZR(i, j) = \exists j \in \{ j | 0 <= j < n \} \left( A\left[i, j\right] \neq 0 \right)
+\end{equation}
+\end{block}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Non-Zero Column}
+\begin{definition}
+A \textbf{non-zero column} is a column that has at least one element whose value is not zero. \\
+\begin{block}{Propositional Function}
+Given a m x n matrix A where m is the row size and n is the column size \\
+Given some identifying column index j \\ 
+\begin{equation}
+NZC(i, j) = \exists i \in \{ i | 0 <= i < m \} \left( A\left[i, j\right] \neq 0 \right)
+\end{equation}
+\end{block}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Leading Row Entry}
+\begin{definition}
+A \textbf{leading row entry} is the first left-most entry in a non-zero row that is non-zero.
+\end{definition}
+\begin{block}{Propositional Function}
+Given a m x n matrix A where m is the row size and n is the column size \\
+Given some identifying row index i \\ 
+\begin{equation}
+\begin{split}
+LRE(i, j) = \ &\left[\forall k \in \{ k | 0 <= k < j \}\left(A\left[i, k\right] = 0\right)\right] \\
+            \ &\land A\left[i, j\right] \neq 0
+\end{split}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Row Echelon Form}
+\begin{definition}
+\textbf{row echelon form} has the following three properties:
+\begin{enumerate}
+\item All rows containing all zeroes are at the bottom of the matrix
+\item Each leading row entry is at least one column to the right of the leading entry above it
+\item All entries in the column below the leading entry for a given row are zeroes
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+
+\begin{frame}{Row Echelon Form: The first property}
+\begin{equation}
+\begin{split}
+&\forall i \in \{i | 0 <= i < m\}\left[\forall j \in \{j | 0 <= j < n \}\left( A[i, j] = 0\right)\right] \implies \\ 
+&\forall \left[{i^{\prime} | i < i^{\prime} < m} \forall j^{\prime} \in \{ j^{\prime} | 0 < j^{\prime} < n \}\left(A[i^{\prime}, j^{\prime}] = 0\right)\right]
+\end{split}
+\end{equation}
+\end{frame}
+
+\end{document}
